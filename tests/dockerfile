@@ -1,0 +1,15 @@
+# Use an image with PHP and PHPUnit pre-installed
+FROM php:8.1
+RUN docker-php-ext-install mysqli
+# Set the working directory
+WORKDIR /var/www/html/
+ 
+# Install PHPUnit globally (if not installed)
+RUN curl -sSL https://phar.phpunit.de/phpunit.phar -o /usr/local/bin/phpunit && \
+    chmod +x /usr/local/bin/phpunit
+ 
+# Copy all PHP files and tests from the current directory to the container
+COPY . /var/www/html/
+ 
+# Command to run the PHPUnit tests
+CMD ["phpunit", "submit_test.php"]
