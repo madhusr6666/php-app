@@ -1,7 +1,7 @@
 <?php
 use PHPUnit\Framework\TestCase;
 
-class SubmitTest extends TestCase {
+class submit_test extends TestCase {
     public function testSubmitForm() {
         // Simulate a POST request and set POST data
         $_SERVER["REQUEST_METHOD"] = "POST";
