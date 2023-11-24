@@ -6,7 +6,7 @@ class SubmitTest extends TestCase {
 
     protected function setUp(): void {
         // Set the URL to your submit.php file
-        $this->url = 'http://localhost/submit.php'; // Replace with your server URL
+        $this->url = 'http://18.232.65.156:8081/'; // Replace with your server URL
     }
 
     public function testFormSubmissionSuccess() {
