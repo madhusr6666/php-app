@@ -1,34 +1,23 @@
-<?php
 use PHPUnit\Framework\TestCase;
 
 class SubmitTest extends TestCase {
-    private $url;
-
-    protected function setUp(): void {
-        // Set the URL to your submit.php file
-        $this->url = 'http://18.232.65.156:8081/'; // Replace with your server URL
-    }
-
     public function testFormSubmissionSuccess() {
-        $data = [
-            'name' => 'John Doe',
-            'email' => 'john@example.com'
-        ];
+        // Simulate form data
+        $_POST["name"] = 'John Doe';
+        $_POST["email"] = 'john@example.com';
 
-        $options = [
-            'http' => [
-                'method' => 'POST',
-                'header' => 'Content-type: application/x-www-form-urlencoded',
-                'content' => http_build_query($data)
-            ]
-        ];
+        // Set up server variables
+        $_SERVER['REQUEST_METHOD'] = 'POST';
+        $_SERVER['REQUEST_URI'] = '/submit.php';
 
-        $context = stream_context_create($options);
-        $result = file_get_contents($this->url, false, $context);
+        // Include the submit.php file to simulate its execution
+        ob_start();
+        include 'submit.php';
+        $result = ob_get_clean();
 
+        // Test if the submission was successful
         $this->assertStringContainsString('Data submitted successfully!', $result);
     }
 
     // Add more test cases for edge cases, validation, etc.
 }
-?>
