@@ -1,23 +1,16 @@
+<?php
 use PHPUnit\Framework\TestCase;
 
 class SubmitTest extends TestCase {
-    public function testFormSubmissionSuccess() {
-        // Simulate form data
-        $_POST["name"] = 'John Doe';
-        $_POST["email"] = 'john@example.com';
+    public function testSubmitForm() {
+        $_POST["name"] = "Test Name";
+        $_POST["email"] = "test@example.com";
 
-        // Set up server variables
-        $_SERVER['REQUEST_METHOD'] = 'POST';
-        $_SERVER['REQUEST_URI'] = '/submit.php';
-
-        // Include the submit.php file to simulate its execution
-        ob_start();
         include 'submit.php';
-        $result = ob_get_clean();
 
-        // Test if the submission was successful
-        $this->assertStringContainsString('Data submitted successfully!', $result);
+        // Assert that data is submitted successfully
+        $this->expectOutputString('Data submitted successfully!');
     }
 
-    // Add more test cases for edge cases, validation, etc.
+    // Add more test cases as needed...
 }
