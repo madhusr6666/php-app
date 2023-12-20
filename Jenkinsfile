@@ -11,7 +11,7 @@ pipeline{
                 sh 'docker build -t $imagename /var/lib/jenkins/workspace/job1/tests'
             }
         }
-        state('Build'){
+        stage('Build'){
              steps{
                  sh 'docker build -t $imagename /var/lib/jenkins/workspace/job1/'
              }
