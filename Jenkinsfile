@@ -8,7 +8,7 @@ pipeline{
         }
         stage('Automated Test'){
             steps{
-                sh 'docker build -t $imagename /var/lib/jenkins/workspace/job1/tests'
+                sh 'docker build -t $imagetname /var/lib/jenkins/workspace/job1/tests'
             }
         }
         stage('Build'){
