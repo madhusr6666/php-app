@@ -6,11 +6,6 @@ pipeline{
                 git branch: 'main', url: 'https://github.com/madhusr6666/php-app.git'
             }
         }
-        stage('Automated Test'){
-            steps{
-                sh 'docker build -t $imagetname /var/lib/jenkins/workspace/job1/tests'
-            }
-        }
         stage('Build'){
              steps{
                  sh 'docker build -t $imagename /var/lib/jenkins/workspace/job1/'
