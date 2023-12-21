@@ -8,12 +8,12 @@ pipeline{
         }
         stage('Build'){
              steps{
-                 sh 'docker build -t $imagename /var/lib/jenkins/workspace/job1/'
+                 sh 'docker build -t image1 /var/lib/jenkins/workspace/job1/'
              }
         }
         stage('Deploy'){
             steps{
-                sh 'docker run -itd --name $contname -p $contport:80 $imagename'
+                ansiblePlaybook credentialsId: 'b1ec2536-16ca-4835-8382-9821d83e6c40', disableHostKeyChecking: true, installation: 'ansible', inventory: '/etc/ansible/hosts', playbook: '/etc/ansible/playbook.yml', vaultTmpPath: ''
             }
         }
         
