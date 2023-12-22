@@ -13,6 +13,7 @@ pipeline{
         }
         stage('Push the DockerHub'){
              steps{
+                 sh 'docker tag image1 madhu6666/image:latest'
                  sh 'docker push madhu6666/image:latest'
              }
         }
