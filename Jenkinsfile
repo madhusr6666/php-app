@@ -20,7 +20,7 @@ pipeline{
         }
         stage('Deploy'){
             steps{
-                 ansiblePlaybook becomeUser: 'ansible', disableHostKeyChecking: true, installation: 'ansible', inventory: '/etc/ansible/', playbook: '/etc/ansible/', vaultTmpPath: ''
+                 ansiblePlaybook becomeUser: 'ansible', disableHostKeyChecking: true, installation: 'ansible', inventory: '/etc/ansible/hosts', playbook: '/etc/ansible/playbook.yml', vaultTmpPath: ''
             }
         }
         
