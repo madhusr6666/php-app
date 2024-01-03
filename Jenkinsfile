@@ -8,7 +8,7 @@ pipeline{
         }
         stage('Build'){
              steps{
-                 sh 'docker login -u madhu6666 -p mokshi@9160'
+                 sh 'docker login'
                  sh 'sudo docker build -t image1 /var/lib/jenkins/workspace/job1/'
              }
         }
