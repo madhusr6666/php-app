@@ -9,7 +9,7 @@ pipeline{
         stage('Build'){
              steps{
                  withCredentials([usernamePassword(credentialsId: '6dfa66d1-c51d-4635-baea-ff5e85621a1f', passwordVariable: 'PASSWORD_VAR', usernameVariable: 'USERNAME')]) {
-                     sh 'docker login --username madhu6666 --password-stdin $6dfa66d1-c51d-4635-baea-ff5e85621a1f'
+                     sh 'docker login --username $USERNAME --password-stdin $PASSWORD_VAR'
                      sh 'sudo docker build -t image1 /var/lib/jenkins/workspace/job1/'
                  }
                  
