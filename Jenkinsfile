@@ -8,8 +8,11 @@ pipeline{
         }
         stage('Build'){
              steps{
-                 sh 'docker login --username madhu6666 --password-stdin $6dfa66d1-c51d-4635-baea-ff5e85621a1f'
-                 sh 'sudo docker build -t image1 /var/lib/jenkins/workspace/job1/'
+                 withCredentials([usernamePassword(credentialsId: '6dfa66d1-c51d-4635-baea-ff5e85621a1f', passwordVariable: 'PASSWORD_VAR', usernameVariable: 'USERNAME')]) {
+                     sh 'docker login --username madhu6666 --password-stdin $6dfa66d1-c51d-4635-baea-ff5e85621a1f'
+                     sh 'sudo docker build -t image1 /var/lib/jenkins/workspace/job1/'
+                 }
+                 
              }
         }
         stage('Push the DockerHub'){
