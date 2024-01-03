@@ -8,12 +8,9 @@ pipeline{
         }
         stage('Build'){
              steps{
-                 withCredentials([usernamePassword(credentialsId: '6dfa66d1-c51d-4635-baea-ff5e85621a1f', passwordVariable: 'PASSWORD_VAR', usernameVariable: 'USERNAME')]) {
-                     sh 'docker login --username $usernameVariable --password-stdin $passwordVariable'
-                     sh 'sudo docker build -t image1 /var/lib/jenkins/workspace/job1/'
-                 }
-                 
+                 sh 'sudo docker build -t image1 /var/lib/jenkins/workspace/job1/'
              }
+                 
         }
         stage('Push the DockerHub'){
              steps{
